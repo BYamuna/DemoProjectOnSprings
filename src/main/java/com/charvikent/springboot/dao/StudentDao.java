@@ -1,7 +1,10 @@
 package com.charvikent.springboot.dao;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,7 +28,23 @@ public class StudentDao {
 		  sessionFactory.getCurrentSession().saveOrUpdate(student);
 		  
 	  }
+	 
+	@SuppressWarnings("unchecked")
+	public List<Student> getStudentList()
+	 {
+	
+		 String hql ="from Student";
+		 
+		 Query query=sessionFactory.getCurrentSession().createQuery(hql);//here persistent class name is Emp  
 
+		 List<Student> list=query.list();
+		 for(Student s:list){
+		 System.out.println(s.getFirstname()+" "+s.getLastname());
+		 
+		 }
+		return list;
+				 
+	 }
 
 
 

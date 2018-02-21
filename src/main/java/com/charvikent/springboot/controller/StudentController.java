@@ -1,6 +1,7 @@
 package com.charvikent.springboot.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -25,6 +26,12 @@ public class StudentController {
 	public String showHomePage(Model model)
 	{
 	  model.addAttribute("student",new Student());
+	  
+	  List<Student> slist=studentDao.getStudentList();
+	  
+	  model.addAttribute("slist",slist);
+	  
+	   
 		return "student";
 	}
 @RequestMapping(value = "/studenttest", method = RequestMethod.POST)
@@ -33,4 +40,18 @@ public String saveStudent(@Valid @ModelAttribute  Student student,Model model) t
     studentDao.SaveOrUpdate(student);
 	return "redirect:studenttest";
 	} 
+
+
+@SuppressWarnings("unused")
+@RequestMapping("/studentlist")	
+public void showStudentsList(Model model)
+{
+    List<Student> slist=studentDao.getStudentList();
+    
+    
+}
+
+
+
+
 }

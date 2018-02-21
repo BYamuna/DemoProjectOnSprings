@@ -1,6 +1,7 @@
 package com.charvikent.springboot.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -22,6 +23,8 @@ public class EmployeeController {
 	public String showHomePage(Model model)
 	{
 	  model.addAttribute("employee",new Employee());
+	  List<Employee> elist=edao.getEmployeesList();
+	  model.addAttribute("elist",elist);
 		return "employee";
 	}
 	@RequestMapping(value = "/employeetest", method = RequestMethod.POST)
@@ -30,4 +33,10 @@ public class EmployeeController {
 	    edao.SaveOrUpdate(employee);
 		return "redirect:employeetest";
 		} 
+	@SuppressWarnings("unused")
+	@RequestMapping("/employeelist")	
+	public void showStudentsList(Model model)
+	{
+	    List<Employee> elist=edao.getEmployeesList();   
+	}
 }

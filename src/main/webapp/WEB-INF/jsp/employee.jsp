@@ -7,10 +7,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Employee form</title>
 </head>
 <body>
+<div class="container">
 <form:form modelAttribute="employee" class="form-horizontal"
 		action="employeetest" method="POST">
 		<form:hidden path="id" />
@@ -35,5 +40,46 @@
 		</div>
 
 	</form:form>
+	</div>
+	<div class="container">
+	<div class="cleafix">
+		<div class="col-md-12">
+			<h1>Employee Details</h1>
+			<div class="table-responsive-lg">
+				<table class="table table-bordered table-hover">
+					<tr class="warning">
+						<th>id</th>
+						<th>Employee name</th>
+						<th>Employee Designation</th>
+						<th>Employee Salary</th>
+						<!-- <th>Date</th>
+						<th>fileupload</th>
+						<th>filedownload</th> -->
+						<th>options</th>
+					</tr>
+					<c:forEach var="list" items="${elist}">
+						<tr class="active">
+							<td>${list.id }</td>
+							<td>${list.name }</td>
+							<td>${list.designation}</td>
+							<td>${list.salary}</td>
+							<%-- <td>${list.course}</td>
+							<td>${list.mobile}</td> --%>
+		
+							<%-- <td><c:if test="${not empty list.files}">
+			    <c:forTokens items="${list.files}" delims="*" var="mySplit">
+			<a class="attachments" target="_blank" href="reportDocuments/${mySplit}"><i class="fa fa-paperclip fa-lg grey" title="${mySplit}"></i></a>
+		    </c:forTokens>
+		   </c:if> </td> --%>
+							<td><a href="delete?id=${list.id}"> <i
+									class="fa fa-trash"></i>
+							</a> <a href="edit?id=${list.id}"> <i class="fa fa-edit"></i></a></td>
+						</tr>
+					</c:forEach>
+					</table>
+					</div>
+					</div>
+					</div>
+					</div>
 </body>
 </html>
