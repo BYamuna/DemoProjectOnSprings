@@ -1,10 +1,13 @@
 package com.charvikent.springboot.dao;
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.charvikent.springboot.model.Book;
 @Repository
 @Transactional
@@ -36,6 +39,21 @@ public class BookDao {
 			 }
 			return list;		 
 		 }
+
+
+	public void deleteBookRecordByid(String id) {
+		
+		String hql ="delete from Book where id=:i";
+				
+	 Query query =sessionFactory.getCurrentSession().createQuery(hql);
+       query.setParameter("i",Integer.parseInt(id));
+       
+      int status= query.executeUpdate();
+        if(status ==1)
+        	System.out.println("record deleted");
+        else
+        	System.out.println("record not deleted");
+	}
 
 
 

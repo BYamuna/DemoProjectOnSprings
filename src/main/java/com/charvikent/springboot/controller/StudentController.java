@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.charvikent.springboot.dao.StudentDao;
 import com.charvikent.springboot.model.Student;
@@ -46,11 +47,15 @@ public String saveStudent(@Valid @ModelAttribute  Student student,Model model) t
 @RequestMapping("/studentlist")	
 public void showStudentsList(Model model)
 {
-    List<Student> slist=studentDao.getStudentList();
-    
-    
+    List<Student> slist=studentDao.getStudentList(); 
 }
-
+@RequestMapping(value = "/deletestudent")
+public String  deleteStudent(@RequestParam(value="id", required=true) String id,Model model)
+	{
+		studentDao.deleteStudentRecordByid(id);
+		
+		return "redirect:studenttest";
+	}	
 
 
 

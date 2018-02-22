@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.charvikent.springboot.dao.BookDao;
 import com.charvikent.springboot.model.Book;
@@ -35,8 +36,15 @@ public class BookController {
 		} 
 	@SuppressWarnings("unused")
 	@RequestMapping("/booklist")	
-	public void showStudentsList(Model model)
+	public void showBooksList(Model model)
 	{
 	    List<Book> elist=bdao.getBooksList(); 
+	}
+	
+	@RequestMapping(value = "/deletebook")
+	public String  deleteBook(@RequestParam(value="id", required=true) String id,Model model)
+	{
+			bdao.deleteBookRecordByid(id);
+			return "redirect:booktest";
 	}
 }

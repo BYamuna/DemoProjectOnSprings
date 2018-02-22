@@ -41,4 +41,17 @@ public class EmployeeDao {
 			return list;		 
 		 }
 
+
+	public void deleteEmployeeRecordByid(String id) 
+	{
+		String hql="delete from Employee where id=:i";
+		Query q =sessionFactory.getCurrentSession().createQuery(hql);
+	    q.setParameter("i",Integer.parseInt(id));
+	       
+	      int status= q.executeUpdate();
+	        if(status ==1)
+	        	System.out.println("record deleted");
+	        else
+	        	System.out.println("record not deleted");
+	}
 }

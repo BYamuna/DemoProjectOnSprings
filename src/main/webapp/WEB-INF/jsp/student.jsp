@@ -79,7 +79,7 @@
 			<a class="attachments" target="_blank" href="reportDocuments/${mySplit}"><i class="fa fa-paperclip fa-lg grey" title="${mySplit}"></i></a>
 		    </c:forTokens>
 		   </c:if> </td> --%>
-							<td><a href="delete?id=${list.id}"> <i
+							<td><a href="deletestudent?id=${list.id}"> <i
 									class="fa fa-trash"></i>
 							</a> <a href="edit?id=${list.id}"> <i class="fa fa-edit"></i></a></td>
 						</tr>
