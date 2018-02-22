@@ -1,6 +1,7 @@
 package com.charvikent.springboot.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -22,12 +23,20 @@ public class BookController {
 	public String showHomePage(Model model)
 	{
 	  model.addAttribute("book",new Book());
+	  List<Book> blist=bdao.getBooksList();
+	  model.addAttribute("blist",blist);
 		return "book";
 	}
 	@RequestMapping(value = "/booktest", method = RequestMethod.POST)
-	public String saveStudent(@Valid @ModelAttribute  Book book,Model model) throws IOException {
+	public String saveBook(@Valid @ModelAttribute  Book book,Model model) throws IOException {
 		//System.out.println("entering into post....");
 	    bdao.SaveOrUpdate(book);
 		return "redirect:booktest";
 		} 
+	@SuppressWarnings("unused")
+	@RequestMapping("/booklist")	
+	public void showStudentsList(Model model)
+	{
+	    List<Book> elist=bdao.getBooksList(); 
+	}
 }

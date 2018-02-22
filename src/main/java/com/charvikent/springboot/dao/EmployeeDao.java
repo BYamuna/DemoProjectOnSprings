@@ -34,9 +34,9 @@ public class EmployeeDao {
 			 
 			 Query query=sessionFactory.getCurrentSession().createQuery(hql);//here persistent class name is Emp  
 			 List<Employee> list=query.list();
-			 for(Employee e:list){
+			 for(Employee e:list)
+			 {
 			 System.out.println(e.getName()+" "+e.getSalary());
-			 
 			 }
 			return list;		 
 		 }

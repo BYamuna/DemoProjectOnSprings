@@ -28,7 +28,7 @@ public class EmployeeController {
 		return "employee";
 	}
 	@RequestMapping(value = "/employeetest", method = RequestMethod.POST)
-	public String saveStudent(@Valid @ModelAttribute  Employee employee,Model model) throws IOException {
+	public String saveEmployee(@Valid @ModelAttribute  Employee employee,Model model) throws IOException {
 		//System.out.println("entering into post....");
 	    edao.SaveOrUpdate(employee);
 		return "redirect:employeetest";
