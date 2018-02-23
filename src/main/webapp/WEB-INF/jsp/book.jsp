@@ -16,6 +16,7 @@
 </head>
 <body>
 <div class="container">
+<h1>Book Master</h1>
 <form:form modelAttribute="book" class="form-horizontal"
 		action="booktest" method="POST">
 		<form:hidden path="id" />

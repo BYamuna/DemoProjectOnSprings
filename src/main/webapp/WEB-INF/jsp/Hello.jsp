@@ -15,6 +15,7 @@
 </head>
 <body>
 <div class="container">
+<h1>Hello Master</h1>
 	<form:form modelAttribute="hello" class="form-horizontal" action="test" method="POST">
 		<%-- <form:hidden path="id" /> --%>
 		<div class="form-group">

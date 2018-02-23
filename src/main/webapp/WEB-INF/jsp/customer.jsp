@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
@@ -12,14 +11,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Student form</title>
+<title>Customer Form</title>
 </head>
 <body>
-
 <div class="container">
-<h1>Student Master</h1>
-	<form:form modelAttribute="student" class="form-horizontal"
-		action="studenttest" method="POST">
+<h1>Customer Master</h1>
+	<form:form modelAttribute="customer" class="form-horizontal" action="customertest" method="POST">
 		<form:hidden path="id" />
 		<div class="form-group">
 			<label class="col-md-3 control-label no-padding-right">FirstName:</label>
@@ -32,27 +29,24 @@
 				placeholder="Enter lastname" />
 		</div>
 		<div class="form-group">
-			<label class="col-md-3 control-label no-padding-right">Course:</label>
-			<form:input path="course" class="col-md-3" placeholder="Enter course" />
+			<label class="col-md-3 control-label no-padding-right">Email:</label>
+			<form:input path="email" class="col-md-3" placeholder="Enter Email" />
 		</div>
 
 		<div class="form-group">
-			<label class="col-md-3 control-label no-padding-right">MobileNo:</label>
-			<form:input path="mobile" class="col-md-3"
-				placeholder="Enter mobileno" />
+			<label class="col-md-3 control-label no-padding-right">Address:</label>
+			<form:input path="address" class="col-md-3" placeholder="Enter address" />
 		</div>
 		<div class="form-group">
-			<input type="submit" id="submit" class="btn btn-primary"
-				value="Create" /> <input class="btn-default btn cancel" type="reset"
-				value="Reset" />
+			<input type="submit" id="submit" class="btn btn-primary" value="Create" /> 
+			<input class="btn-default btn cancel" type="reset" value="Reset" />
 		</div>
-
 	</form:form>
 	</div>
 	<div class="container">
 	<div class="cleafix">
 		<div class="col-md-12">
-			<h1>Student Details</h1>
+			<h1>Customer Details</h1>
 			<div class="table-responsive-lg">
 				<table class="table table-bordered table-hover">
 
@@ -60,27 +54,18 @@
 						<th>id</th>
 						<th>First name</th>
 						<th>Last name</th>
-						<th>course</th>
-						<th>mobile</th>
-						<!-- <th>Date</th>
-						<th>fileupload</th>
-						<th>filedownload</th> -->
+						<th>Email id</th>
+						<th>Address</th>
 						<th>options</th>
 					</tr>
-					<c:forEach var="list" items="${slist}">
+		<c:forEach var="list" items="${clist}">
 						<tr class="active">
 							<td>${list.id }</td>
 							<td>${list.firstname }</td>
 							<td>${list.lastname}</td>
-							<td>${list.course}</td>
-							<td>${list.mobile}</td>
-		
-							<%-- <td><c:if test="${not empty list.files}">
-			    <c:forTokens items="${list.files}" delims="*" var="mySplit">
-			<a class="attachments" target="_blank" href="reportDocuments/${mySplit}"><i class="fa fa-paperclip fa-lg grey" title="${mySplit}"></i></a>
-		    </c:forTokens>
-		   </c:if> </td> --%>
-							<td><a href="deletestudent?id=${list.id}"> <i
+							<td>${list.email}</td>
+							<td>${list.address}</td>
+							<td><a href="deletecustomer?id=${list.id}"> <i
 									class="fa fa-trash"></i>
 							</a> <a href="edit?id=${list.id}"> <i class="fa fa-edit"></i></a></td>
 						</tr>
@@ -90,7 +75,5 @@
 					</div>
 					</div>
 					</div>
-					
-
 </body>
 </html>

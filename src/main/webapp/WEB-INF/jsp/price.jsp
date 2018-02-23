@@ -16,6 +16,7 @@
 </head>
 <body>
 <div class="container">
+<h1>Price Master</h1>
 <form:form modelAttribute="price" class="form-horizontal"
 		action="pricetest" method="POST">
 		<form:hidden path="id" />

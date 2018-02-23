@@ -56,7 +56,4 @@ public String  deleteStudent(@RequestParam(value="id", required=true) String id,
 		
 		return "redirect:studenttest";
 	}	
-
-
-
 }
