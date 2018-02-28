@@ -15,7 +15,7 @@ public class Price {
 	String iname;
 	String iprice;
 	public Price() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Price(int id, String iname, String iprice) {
 		this.id = id;

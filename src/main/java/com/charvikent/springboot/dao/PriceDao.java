@@ -41,7 +41,7 @@ public class PriceDao {
 	 }
 	public void deletePriceRecordByid(String id) 
 	{
-		String hql="delete from Student where id=:i";
+		String hql="delete from  Price where id=:i";
 		Query que =sessionFactory.getCurrentSession().createQuery(hql);
 	    que.setParameter("i",Integer.parseInt(id));
 	       

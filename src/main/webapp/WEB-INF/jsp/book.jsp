@@ -14,7 +14,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Book form</title>
 </head>
+<script>
+window.setTimeout(function() {
+    $(".msgcss").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 5000);
+</script>
 <body>
+<div class="container">
+<c:if test="${not empty msg}">
+		<div class="msgcss row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="form-group">
+					<div class="alert alert-${cssMsg} fadeIn animated">${msg}</div>
+				</div>
+			</div>
+		</div>
+	</c:if></div>
 <div class="container">
 <h1>Book Master</h1>
 <form:form modelAttribute="book" class="form-horizontal"

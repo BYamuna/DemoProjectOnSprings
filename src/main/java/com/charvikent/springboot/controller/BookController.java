@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.charvikent.springboot.dao.BookDao;
 import com.charvikent.springboot.model.Book;
@@ -29,16 +30,21 @@ public class BookController {
 		return "book";
 	}
 	@RequestMapping(value = "/booktest", method = RequestMethod.POST)
-	public String saveBook(@Valid @ModelAttribute  Book book,Model model) throws IOException {
+	public String saveBook(@Valid @ModelAttribute  Book book,Model model,RedirectAttributes redir) throws IOException {
 		//System.out.println("entering into post....");
 		Boolean result=bdao.checkRecordExistsOrNot(book);
 		if(result==false)
 		{
 	    bdao.SaveOrUpdate(book);
+	    redir.addFlashAttribute("msg", "Record inserted");
+		redir.addFlashAttribute("cssMsg", "success");
+		return "redirect:/booktest";
 		}
 		else
 		{
 			System.out.println("Record already exists");
+			redir.addFlashAttribute("msg", "Record already exists");
+			redir.addFlashAttribute("cssMsg", "warning");
 		}
 		return "redirect:booktest";
 		} 
@@ -50,9 +56,11 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "/deletebook")
-	public String  deleteBook(@RequestParam(value="id", required=true) String id,Model model)
+	public String  deleteBook(@RequestParam(value="id", required=true) String id,Model model,RedirectAttributes redir)
 	{
 			bdao.deleteBookRecordByid(id);
+			redir.addFlashAttribute("msg", "Record deleted");
+			redir.addFlashAttribute("cssMsg", "danger");
 			return "redirect:booktest";
 	}
 }

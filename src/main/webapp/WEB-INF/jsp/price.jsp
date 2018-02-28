@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
@@ -14,7 +13,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Price form</title>
 </head>
+<script>
+window.setTimeout(function() {
+    $(".msgcss").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 5000);
+</script>
 <body>
+<div class="container">
+<c:if test="${not empty msg}">
+		<div class="msgcss row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="form-group">
+					<div class="alert alert-${cssMsg} fadeIn animated">${msg}</div>
+				</div>
+			</div>
+		</div>
+	</c:if></div>
 <div class="container">
 <h1>Price Master</h1>
 <form:form modelAttribute="price" class="form-horizontal"
