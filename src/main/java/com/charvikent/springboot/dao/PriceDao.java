@@ -39,7 +39,8 @@ public class PriceDao {
 		 }
 		return list;		 
 	 }
-	public void deletePriceRecordByid(String id) {
+	public void deletePriceRecordByid(String id) 
+	{
 		String hql="delete from Student where id=:i";
 		Query que =sessionFactory.getCurrentSession().createQuery(hql);
 	    que.setParameter("i",Integer.parseInt(id));
@@ -53,7 +54,17 @@ public class PriceDao {
 
 		
 	}
-
-
-
+	@SuppressWarnings("unchecked")
+	public Boolean checkRecordExistsOrNot(Price price) 
+	{
+		String hql="from Price where iprice=:ip";
+		Query que =sessionFactory.getCurrentSession().createQuery(hql);
+	    que.setParameter("ip",price.getIprice());
+	    List<Price> list=que.list();
+	    if(list.size()>0)
+		 {
+			return true;
+		 }
+		return false;
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.charvikent.springboot.model.Book;
+import com.charvikent.springboot.model.Employee;
 @Repository
 @Transactional
 public class BookDao {
@@ -56,5 +57,16 @@ public class BookDao {
 	}
 
 
-
+	@SuppressWarnings("unchecked")
+	public Boolean checkRecordExistsOrNot(Book book) {
+		String hql="from Book where quantity=:q";
+		Query q =sessionFactory.getCurrentSession().createQuery(hql);
+		 q.setParameter("q",book.getQuantity());
+		 List<Employee> list=q.list();
+		 if(list.size()>0)
+		 {
+			 return true;
+		 }
+		return false;
+	}
 }

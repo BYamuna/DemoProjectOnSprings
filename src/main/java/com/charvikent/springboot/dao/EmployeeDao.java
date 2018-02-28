@@ -54,4 +54,18 @@ public class EmployeeDao {
 	        else
 	        	System.out.println("record not deleted");
 	}
+
+
+	@SuppressWarnings("unchecked")
+	public Boolean checkRecordExistsOrNot(Employee employee) {
+		String hql="from Employee where salary=:s";
+		Query q =sessionFactory.getCurrentSession().createQuery(hql);
+		 q.setParameter("s",employee.getSalary());
+		 List<Employee> list=q.list();
+		 if(list.size()>0)
+		 {
+			 return true;
+		 }
+		return false;
+	}
 }

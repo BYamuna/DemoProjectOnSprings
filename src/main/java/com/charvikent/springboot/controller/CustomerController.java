@@ -36,8 +36,16 @@ public class CustomerController
 @RequestMapping(value = "/customertest", method = RequestMethod.POST)
 public String saveCustomer(@Valid @ModelAttribute  Customer customer,Model model) throws IOException 
 {
-	
+	Boolean result=cdao.checkRecordExistsOrNot(customer);
+	if(result==false)
+	{
     cdao.SaveOrUpdate(customer);
+	}
+	else
+	{
+		System.out.println("Record already exists");
+	}
+    //cdao.SaveOrUpdate(customer);
 	return "redirect:customertest";
 } 
 

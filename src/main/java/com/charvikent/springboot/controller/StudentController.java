@@ -38,8 +38,17 @@ public class StudentController {
 @RequestMapping(value = "/studenttest", method = RequestMethod.POST)
 public String saveStudent(@Valid @ModelAttribute  Student student,Model model) throws IOException {
 	//System.out.println("entering into post....");
+	
+	 Boolean result =studentDao.checkRecordExistsOrNot(student);
+	 if(result==false)
+	 {
     studentDao.SaveOrUpdate(student);
-	return "redirect:studenttest";
+	 }
+	 else
+	 {
+		 System.out.println("Record already exists");
+	 }
+    return "redirect:studenttest";
 	} 
 
 

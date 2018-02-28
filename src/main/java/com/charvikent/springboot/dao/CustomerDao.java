@@ -1,11 +1,15 @@
 package com.charvikent.springboot.dao;
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.charvikent.springboot.model.Customer;
+import com.charvikent.springboot.model.Employee;
 
 @Repository
 @Transactional
@@ -54,5 +58,18 @@ public class CustomerDao
 	        else
 	        	System.out.println("record not deleted");	
 		
+	}
+	@SuppressWarnings("unchecked")
+	public Boolean checkRecordExistsOrNot(Customer customer) 
+	{
+		String hql="from Customer where email=:e";
+		Query q =sessionFactory.getCurrentSession().createQuery(hql);
+		 q.setParameter("e",customer.getEmail());
+		 List<Employee> list=q.list();
+		 if(list.size()>0)
+		 {
+			 return true;
+		 }
+		return false;
 	}	
 }

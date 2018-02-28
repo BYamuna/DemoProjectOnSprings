@@ -62,5 +62,19 @@ public class StudentDao {
 	}
 
 
+	@SuppressWarnings("unchecked")
+	public Boolean checkRecordExistsOrNot(Student student) {
+		String hql="from Student where mobile=:m";
+		Query q =sessionFactory.getCurrentSession().createQuery(hql);
+		q.setParameter("m",student.getMobile());
+		List<Student> list=q.list();
+		 if(list.size()>0)
+		 {
+			return true;
+		 }
+		return false;
+	}
+
+
 
 }

@@ -32,7 +32,15 @@ public class EmployeeController {
 	public String saveEmployee(@Valid @ModelAttribute  Employee employee,Model model) throws IOException 
 	{
 		//System.out.println("entering into post....");
+		Boolean result=edao.checkRecordExistsOrNot(employee);
+		if(result==false)
+		{
 	    edao.SaveOrUpdate(employee);
+		}
+		else
+		{
+			System.out.println("Record already exists");
+		}
 		return "redirect:employeetest";
 	} 
 	@SuppressWarnings("unused")

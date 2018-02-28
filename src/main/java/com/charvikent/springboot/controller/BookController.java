@@ -31,7 +31,15 @@ public class BookController {
 	@RequestMapping(value = "/booktest", method = RequestMethod.POST)
 	public String saveBook(@Valid @ModelAttribute  Book book,Model model) throws IOException {
 		//System.out.println("entering into post....");
+		Boolean result=bdao.checkRecordExistsOrNot(book);
+		if(result==false)
+		{
 	    bdao.SaveOrUpdate(book);
+		}
+		else
+		{
+			System.out.println("Record already exists");
+		}
 		return "redirect:booktest";
 		} 
 	@SuppressWarnings("unused")

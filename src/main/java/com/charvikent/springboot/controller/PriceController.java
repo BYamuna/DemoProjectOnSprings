@@ -29,7 +29,16 @@ public class PriceController {
 	@RequestMapping(value = "/pricetest", method = RequestMethod.POST)
 	public String savePrice(@Valid @ModelAttribute  Price price,Model model) throws IOException {
 		//System.out.println("entering into post....");
+		 Boolean result =pdao.checkRecordExistsOrNot(price);
+		 if(result==false)
+		 {
 	    pdao.SaveOrUpdate(price);
+		 }
+		 else
+		 {
+			 System.out.println("Record already exists");
+		 }
+		//pdao.SaveOrUpdate(price);
 		return "redirect:pricetest";
 		} 
 	@SuppressWarnings("unused")
