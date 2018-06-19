@@ -37,13 +37,11 @@ window.setTimeout(function() {
 		<form:hidden path="id" />
 		<div class="form-group">
 			<label class="col-md-3 control-label no-padding-right">FirstName:</label>
-			<form:input path="firstname" class="col-md-3"
-				placeholder="Enter firstname" />
+			<form:input path="firstname" class="col-md-3" placeholder="Enter firstname" />
 		</div>
 		<div class="form-group">
 			<label class="col-md-3 control-label no-padding-right">LastName:</label>
-			<form:input path="lastname" class="col-md-3"
-				placeholder="Enter lastname" />
+			<form:input path="lastname" class="col-md-3" placeholder="Enter lastname" />
 		</div>
 		<div class="form-group">
 			<label class="col-md-3 control-label no-padding-right">Course:</label>
@@ -52,11 +50,9 @@ window.setTimeout(function() {
 
 		<div class="form-group">
 			<label class="col-md-3 control-label no-padding-right">MobileNo:</label>
-			<form:input path="mobile" class="col-md-3"
-				placeholder="Enter mobileno" />
+			<form:input path="mobile" class="col-md-3" placeholder="Enter mobileno" />
 		</div>
 		<div class="form-group">
-
        <label class="col-md-3 control-label no-padding-right">Date:</label>
        <form:input type="datetime-local" path="date" />
        </div>
@@ -75,6 +71,10 @@ window.setTimeout(function() {
 			<input type="submit" id="create" class="btn btn-primary" value="Submit"/> 
 			<input type="reset" id="reset" class="btn btn-default"  value="Cancel"/>
 		</div> 
+			<input type="submit" id="submit" class="btn btn-primary"
+				value="Create" /> <input class="btn-default btn cancel" type="reset"
+				value="Reset" />
+		</div>
 	</form:form>
 	</div>
 	<div class="container">
@@ -103,7 +103,6 @@ window.setTimeout(function() {
 							<td>${list.lastname}</td>
 							<td>${list.course}</td>
 							<td>${list.mobile}</td>
-
 							<td>${list.date}</td>
 							<td>${list.files}</td>		
 							<td>
@@ -119,12 +118,16 @@ window.setTimeout(function() {
 						   	<a href="deletestudent?id=${list.id}"> <i class="fa fa-trash"></i></a> 
 							<a href="editstudent?id=${list.id}"> <i class="fa fa-edit"></i></a>
 							</td>
-					</tr>
+							</tr>
 					</c:forEach>
 					</table>
 					</div>
 					</div>
 					</div>					
 					</div>
+					<!-- </div> -->
+					<!-- </div> -->
+					
+
 </body>
 </html>
