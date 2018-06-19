@@ -70,10 +70,6 @@ window.setTimeout(function() {
 		<div class="form-group">
 			<input type="submit" id="create" class="btn btn-primary" value="Submit"/> 
 			<input type="reset" id="reset" class="btn btn-default"  value="Cancel"/>
-		</div> 
-			<input type="submit" id="submit" class="btn btn-primary"
-				value="Create" /> <input class="btn-default btn cancel" type="reset"
-				value="Reset" />
 		</div>
 	</form:form>
 	</div>

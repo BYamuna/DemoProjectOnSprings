@@ -42,6 +42,13 @@ public class StudentController {
 	  return "user";
 	  
 	}*/
+	@RequestMapping("/loginpage")	
+	public String showLoginPage(Model model)
+	{
+	  model.addAttribute("login",new Login());
+	  return "login";
+	  
+	}
 	@RequestMapping(value = "/loginpage", method = RequestMethod.POST)
 	public String checkLogin(@Valid @ModelAttribute  Login login,Model model,RedirectAttributes redir) throws IOException 
 	{
@@ -62,7 +69,7 @@ public class StudentController {
 @RequestMapping("/studenttest")	
 	public String showHomePage(Model model)
 	{
-	  model.addAttribute("student",new Student());
+	model.addAttribute("student",new Student());
 	  
 	  List<Student> slist=studentDao.getStudentList();
 	  
